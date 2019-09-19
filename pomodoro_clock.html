@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Dancing+Script&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Bree+Serif&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Bree+Serif&display=swap" rel="stylesheet">
+<script src="https://use.fontawesome.com/34264a5c95.js"></script>
+<style>
+	*{
+		box-sizing:border-box;
+		background-color: rgb(30,85,92);
+		color:white;
+	}
+	#container{
+		text-align: center;
+	}
+	/*------------universal------*/
+	#timer-label,#break-label,#session-label{
+		font-size:30px;
+		font-family: 'Bree Serif', serif;
+	}
+	h1{
+		font-size:60px;
+		margin-top: 0px;
+		padding-top: 0px;
+		margin-bottom: 25px;
+	}
+	/*-------title--------*/
+	#title{
+		margin-top: 20px;
+		font-family: 'Dancing Script', cursive;
+
+	}
+	/*------------Increment Decrement Buttons ---------------------*/
+	#incrementDecrementButtons{
+		display:flex;
+		margin-top: 5px;
+		justify-content: center;
+		padding-top:5px;
+		padding-bottom:20px;
+	
+	}
+	#buttonBreak{
+		margin-right: 40px;
+	}
+	#buttonSession{
+		margin-left: 40px;
+	}
+	#break-increment,#break-decrement,#session-increment,#session-decrement{
+		margin:10px;
+		border:none;
+		font-size:20px;
+	}
+	#break-length, #session-length{
+		font-size:25px;
+	}
+	/*---------------Timer ----------------*/
+	#timer{
+		padding-top: 20px;
+		border:5px solid white;
+		margin-left:400px;
+		margin-right:400px;
+		margin-bottom: 10px;
+		border-radius: 15px;
+	}
+	
+	#timer-label{
+		padding-bottom: 0px;
+		margin-top: 20px;
+		margin-bottom: 5px;
+	}
+	#time-left{
+		font-family: 'Noto Sans', sans-serif;
+		margin-top: 0px;
+		padding-top: 0px;
+	}
+	/*--------Start Stop Rest Button-----*/
+	#startStopButtons{
+
+	}
+	#start_stop,#reset{
+		font-size:25px;
+		border-radius: 10px;	
+		border:none;
+		cursor:pointer;
+	}
+	/*-------copyrights--------*/
+	#copyrights{
+		font-size:15px;
+		margin-top: 20px;
+		font-family: 'Bree Serif', serif;
+	}
+	
+
+</style>
+<body>
+	<div id="container">
+		<div id="title"><h1>Pomodoro Clock</h1></div>
+		<div id="incrementDecrementButtons">
+			<div id="buttonBreak">
+				<div id="break-label">Break Length</div>
+				<button id="break-increment" data-change="increment" data-type="Break">+</button>
+					<div id="break-length">5</div>
+				<button id="break-decrement" data-length="5" data-change="decrement" data-type="Break">-</button>
+			</div>
+			<div id="buttonSession">
+				<div id="session-label">Session Length</div>
+				<button id="session-increment" data-change="increment" data-type="Session">+</button>
+					<div id="session-length">25</div>
+				<button id="session-decrement" data-change="decrement" data-type="Session">-</button>
+			</div>
+		</div>
+		<div id="timer">
+			<div id="timer-label">Session</div>
+			<div id="time-left"><h1>25:00</h1></div>
+		</div>
+
+		<div id="startStopButtons">
+			<button id="start_stop"><i class="fa fa-play-circle"><i class="fa fa-pause-circle"></i></i></button>
+			<button id="reset">Reset</button>
+		</div>
+		<audio id="beep" src="https://actions.google.com/sounds/v1/alarms/mechanical_clock_ring.ogg"></audio>
+		<div id="copyrights">Designed and Coded by Dilpreet Kaur</div>
+	</div>
+	
+	<!--controls autoplay -->
+
+	<script type="text/javascript" src="script.js">
+
+	</script>
+	
+</body>
+</html>

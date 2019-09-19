@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<button id="start">start</button>
+	<button id="stop">stop</button>
+	
+	<script type="text/javascript">
+		let minutes=10;
+		let seconds = 60;
+		let t;
+		
+
+
+		function countDown(){
+			if(minutes===0&&seconds){
+				seconds=seconds-1;
+				if(seconds<10&&seconds>0)
+					console.log(`0${minutes}:0${seconds}`);
+				else if(seconds>10)
+					console.log(`0${minutes}:${seconds}`);
+				else if(seconds===0){
+						console.log(`0${minutes}:0${seconds}`);
+						minutes=1;
+						seconds=59;
+						if(minutes>0&&minutes<10)
+							console.log(`0${minutes}:${seconds}`);
+						else
+							console.log(`${minutes}:${seconds}`);
+				}else if(seconds>=10){
+					console.log(`0${minutes}:${seconds}`);
+				}
+			}
+			if(minutes>0&&seconds){
+				seconds=seconds-1;
+				if(minutes<10&&seconds<10&&seconds>0)
+					console.log(`0${minutes}:0${seconds}`);
+				else if(minutes<10&&seconds>=10)
+					console.log(`0${minutes}:${seconds}`);
+				else if(minutes>=10&&seconds<10&&seconds>0)
+					console.log(`${minutes}:0${seconds}`);
+				else if(minutes>=10&&seconds>=10)
+					console.log(`${minutes}:${seconds}`);
+
+				else if(seconds===0){
+					if(minutes>0&&minutes<10)
+						console.log(`0${minutes}:0${seconds}`)
+					else if(minutes>=10)
+						console.log(`${minutes}:0${seconds}`)
+					minutes=minutes-1;
+					seconds=59;
+					if(minutes>0&&minutes<10)
+						console.log(`0${minutes}:${seconds}`);
+					else if(minutes===0)
+						console.log(`0${minutes}:${seconds}`);
+					else
+						console.log(`${minutes}:${seconds}`);
+				}	
+			}
+		}
+	
+		document.getElementById("start").addEventListener("click", ()=>t= setInterval(countDown,1000));
+
+		document.getElementById("stop").addEventListener("click", ()=>clearInterval(t));
+
+
+		
+	</script>
+
+</body>
+</html>

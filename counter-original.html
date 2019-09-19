@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div id="time-left"><h1>10:00</h1></div>
+	<div id="timer-label">session</div>
+	<button id="start">start</button>
+	<button id="stop">stop</button>
+	<script type="text/javascript">
+		let time_left = document.getElementById("time-left");
+		let minutes;
+		let seconds;
+		let t;
+		let sessionLength=10;
+		let timer_label=document.getElementById("timer-label");
+		function setSessionMinutesSeconds(){
+			if(timer_label.textContent==="session"){
+				minutes=sessionLength-1;
+				seconds = 60;
+				/*if(minutes>0&&minutes<10)
+					time_left.innerHTML = `<h1>0${minutes}:${seconds}</h1>`;
+				else
+				time_left.innerHTML = `<h1>${minutes}:${seconds}</h1>`;*/
+			}
+		}
+		setSessionMinutesSeconds();
+		
+
+
+		function countDown(){
+			console.log(minutes+":"+seconds);
+
+			if(minutes===0&&seconds){
+				seconds=seconds-1;
+				if(seconds<10&&seconds>0){
+					time_left.innerHTML = `<h1>0${minutes}:0${seconds}</h1>`;
+				}
+		
+				else if(seconds>=10){
+					time_left.innerHTML = `<h1>0${minutes}:${seconds}</h1>`;
+				}
+				else if(seconds===0){
+						time_left.innerHTML = `<h1>0${minutes}:0${seconds}</h1>`;
+						minutes=4;
+						seconds=60;
+						/*if(minutes>0&&minutes<10)
+							time_left.innerHTML = `<h1>0${minutes}:${seconds}</h1>`;
+						else
+							time_left.innerHTML = `<h1>${minutes}:${seconds}</h1>`*/
+				}
+			}
+			
+
+		
+
+			else if(minutes>0&&seconds){
+					seconds=seconds-1;
+					if(minutes<10&&(seconds>0&&seconds<10))
+						time_left.innerHTML = `<h1>0${minutes}:0${seconds}</h1>`;
+					else if(minutes<10&&seconds>=10)
+						time_left.innerHTML = `<h1>0${minutes}:${seconds}</h1>`;
+					else if(minutes>=10&&(seconds>0&&seconds<10))
+						time_left.innerHTML = `<h1>${minutes}:0${seconds}</h1>`;
+					else if(minutes>=10&&seconds>=10)
+						time_left.innerHTML = `<h1>${minutes}:${seconds}</h1>`;
+
+					else if((minutes>0&&minutes<10)&&seconds===0){
+							time_left.innerHTML = `<h1>0${minutes}:0${seconds}</h1>`;
+							minutes=minutes-1;
+							seconds=60;
+					}
+					else if(minutes>=10&&seconds===0){
+							time_left.innerHTML = `<h1>${minutes}:0${seconds}</h1>`;
+							minutes=minutes-1;
+							seconds=60;
+					}
+
+				
+					
+					/*if(minutes>0&&minutes<10)
+						time_left.innerHTML = `<h1>0${minutes}:${seconds}</h1>`;
+					else if(minutes===0)
+						time_left.innerHTML = `<h1>0${minutes}:${seconds}</h1>`;
+					else
+						time_left.innerHTML = `<h1>${minutes}:${seconds}</h1>`;*/
+			}
+
+		}
+		
+	
+		document.getElementById("start").addEventListener("click", ()=>t= setInterval(countDown,1000));
+
+		document.getElementById("stop").addEventListener("click", ()=>clearInterval(t));
+
+	</script>
+
+</body>
+</html>

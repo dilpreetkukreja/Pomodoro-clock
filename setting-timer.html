@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		div{
+			margin-top:50px;
+			margin-left: 100px;
+		}
+		button{
+			margin-top:50px;
+			margin-left: 100px;
+		}
+	</style>
+</head>
+<body>
+	<div>Pomodoro Clock</div>
+	<div id="session_type">Working</div>
+	<div id="display"><h1>1:00</h1></div>
+	<button id="start">Start Timer</button>
+	<button id="reset">Reset</button>
+	<script type="text/javascript">
+		let working = true;
+		let duration = 2; 
+		let t;
+		let display = document.getElementById("display");
+		let session_type = document.getElementById("session_type");
+		let minutes=2-1;
+		let seconds = 59;
+		let clear=false;
+		display.innerHTML = `<h1>2:00</h1>`;
+		let start = document.getElementById("start");
+
+		function handleStart(){
+			console.log(clear);
+			console.log(t);
+			if(!clear){
+				t = setInterval(decrementTimer,1000);
+				clear=!clear;
+			}
+			else{
+				clear=!clear;
+				clearInterval(t);
+			}
+
+			function decrementTimer(){
+					display.innerHTML = `<h1>${minutes}:${seconds}</h1>`;
+					seconds=seconds-1;
+					if(seconds===0){
+						if(minutes>0){
+							minutes=minutes-1;
+							seconds=59;
+						}
+						if(minutes===0&&seconds===0){
+							if(working){
+								display.innerHTML = `<h1>1:00</h1>`;
+								working=!working;
+								minutes = 1-1;//break
+								seconds=59;
+								session_type.textContent = "Break";
+								
+							}
+							else{
+								display.innerHTML = `<h1>2:00</h1>`;
+								working=!working;
+								minutes=2-1;//working
+								seconds=59;
+								session_type.textContent = "Working";
+								
+							}
+						}
+					}
+			}
+			
+		}
+		function handleReset(){
+			display.innerHTML = `<h1>2:00</h1>`;
+			minutes=2-1;//working
+			seconds=59;
+			session_type.textContent = "Working";
+			clearInterval(t);
+			clear=false;
+			working = true;
+		}
+
+
+		start.addEventListener("click",handleStart);
+		reset.addEventListener("click",handleReset);
+
+	</script>
+
+</body>
+</html>

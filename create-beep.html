@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<audio id="beep" src="https://actions.google.com/sounds/v1/alarms/mechanical_clock_ring.ogg"></audio>
+	<button id="stop">Stop</button>
+	<script type="text/javascript">
+		let beep = document.getElementById("beep");
+		let stop = document.getElementById("stop");
+		
+	
+		beep.play();
+		
+		
+
+		function stopAudio(){
+			beep.stop();
+		}
+
+		stop.addEventListener("click", stopAudio);
+
+
+
+
+		
+		
+	</script>
+
+</body>
+</html>
